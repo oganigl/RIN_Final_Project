@@ -5,7 +5,7 @@
   "idf.openOcdConfigs": [
     "board/esp32s3-builtin.cfg"
   ],
-  "idf.portWin": "COM10",
+  "idf.portWin": "COM13",
   "idf.toolsPathWin": "C:\\Users\\oscar\\.espressif",
   "idf.customExtraVars": {
     "OPENOCD_SCRIPTS": "C:\\Users\\oscar\\.espressif\\tools\\openocd-esp32\\v0.12.0-esp32-20240318/openocd-esp32/share/openocd/scripts",
@@ -21,7 +21,10 @@
     "mqtt.h": "c",
     "mqtt_client.h": "c",
     "camera.h": "c",
-    "esp_camera.h": "c"
+    "esp_camera.h": "c",
+    "gpio.h": "c",
+    "camera_pin.h": "c",
+    "wifi.h": "c"
   },
   "idf.flashType": "UART"
 }

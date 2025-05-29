@@ -2,6 +2,7 @@ import sqlite3
 
 connection = sqlite3.connect("Control_Puerta.db")
 crsr = connection.cursor()
+crsr.execute("PRAGMA foreign_keys = ON;")
 
 
 sql_create_table_initial = """CREATE TABLE IF NOT EXISTS Personas_con_acceso ( 
@@ -11,13 +12,15 @@ surname VARCHAR(30),
 gender CHAR(1), 
 joining DATE);""" 
 
-sql_create_table_entradas = """CREATE TABLE IF NOT EXISTS entradas (
-    identificador INTEGER PRIMARY KEY,
-    foto BLOB,
-    fecha TEXT, --Formato: 'YYYY-MM-DD HH:MM:SS'
-    aceptada_entrada TEXT --formato: 'YES' / 'NO'
-)"""
-
+sql_create_table_entradas = """
+CREATE TABLE IF NOT EXISTS entradas (
+    fecha TEXT PRIMARY KEY,             -- 'YYYY-MM-DD HH:MM:SS'
+    identificador INTEGER,
+    aceptada_entrada TEXT,               -- 'YES' or 'NO'
+    foto BLOB,            
+    FOREIGN KEY (identificador) REFERENCES Personas_con_acceso(identificador)
+);
+"""
 
 crsr.execute(sql_create_table_initial)
 crsr.execute(sql_create_table_entradas)

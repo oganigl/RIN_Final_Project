@@ -14,6 +14,7 @@ typedef struct{
     mqtt_topic_callback_t callback;
 } mqtt_topic_handler_t;
 
-void  mqtt_start(char* username,char* password, const mqtt_topic_handler_t topic_handlers[],int num_handlers);
+void  mqtt_start(const mqtt_topic_handler_t topic_handlers[],int num_handlers);
+void subscribe();
 int send_message(const char* topic,char* data,int len);
 #endif
